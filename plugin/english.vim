@@ -127,13 +127,14 @@ if !exists("g:nin_english#comp")
 let g:nin_english#comp = []
 python3 << collect_word
 import vim
-for n in nin_eng_dict.keys():
-    if (len(n) > 3) and ('[' not in n):
-        vim.command('call add(g:nin_english#comp, "{}")'.format(n))
+for key, value in nin_eng_dict.items():
+    if (len(key) > 3) and ('[' not in key):
+        value = value.replace('"', '\'').replace('/', '\n')
+        vim.command('call add(g:nin_english#comp, {{"word": "{}", "info": "{}"}})'.format(key, value))
 collect_word
 endif
     for m in g:nin_english#comp
-      if m =~ '^' . a:base
+      if m['word'] =~ '^' . a:base
         call add(res, m)
       endif
     endfor
