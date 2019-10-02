@@ -55,7 +55,7 @@ function! NinEnglishInit ()
 
     sy keyword Special significant significantly
 
-    sy keyword Constant we you I
+    sy keyword Constant we you I he she they
     sy keyword Constant this it its there those
 
     sy keyword Comment etal
@@ -83,8 +83,10 @@ with open(vim.eval('g:nin_english#dict')) as fp:
     nin_eng_dict = dict(zip([x[0] for x in tokens], [x[1] for x in tokens]))
 read_dict
 nnoremap K :call EnglishSearch()<CR>
+set omnifunc=NinEnglishComplete
 let g:nin_english#dict_loaded = 1
 endif
+
 endfunction
 
 function! EnglishSearch ()
@@ -141,7 +143,6 @@ endif
     return res
   endif
 endfun
-set omnifunc=NinEnglishComplete
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
