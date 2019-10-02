@@ -4,6 +4,7 @@ scriptencoding utf-8
 " Maintainer:	Ninja <sheepwing@kyudai.jp>
 " License:	Mit licence
 command! EnglishInit call NinEnglishInit()
+command! EnglishIndent call NinEnglishIndent()
 
 if exists('g:loaded_nin_english')
   finish
@@ -127,9 +128,8 @@ let g:nin_english#comp = []
 python3 << collect_word
 import vim
 for n in nin_eng_dict.keys():
-    if len(n) > 3:
-        if '[' not in n:
-            vim.command('let g:nin_english#comp += [\"' + n + '\"]')
+    if (len(n) > 3) and ('[' not in n):
+        vim.command('call add(g:nin_english#comp, "{}")'.format(n))
 collect_word
 endif
     for m in g:nin_english#comp
@@ -144,3 +144,9 @@ set omnifunc=NinEnglishComplete
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
+
+function! NinEnglishIndent()
+  execute "%s/(/\r    (/g"
+  execute "%s/,/,\r  /g"
+  execute "%s/\\. /\\.\r/g"
+endfunction
