@@ -20,7 +20,7 @@ const setupDict = (fname) => {
       .split('\n')
       .map(s=>s.split('\t'))
       .filter(s => s.length === 2)
-      .forEach(s => dict[s[0]] = s[1])
+      .forEach(s => dict[s[0].toLocaleLowerCase()] = s[1])
     loaded = true
   }
 }
