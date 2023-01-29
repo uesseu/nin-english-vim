@@ -33,7 +33,7 @@ Plug 'uesseu/nin-english-vim'
 
 for dein
 ```
-call dein#add('uesseu/')
+call dein#add('uesseu/nin-english-vim')
 ```
 
 And then, you should set 'g:nin_english#dict_dir' and
