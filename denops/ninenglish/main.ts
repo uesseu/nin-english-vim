@@ -38,7 +38,7 @@ const setupWord = (token: string) => {
   for (const p of prefix)
     for (const s of suffix)
       if (token.slice(token.length-s.length) === s && token.slice(0, p.length) === p)
-        result = token.slice(p.length, token.length-s.length)
+        result = token.slice(p.length, token.length-s.length).toLowerCase()
   return dict[result]
 }
 
