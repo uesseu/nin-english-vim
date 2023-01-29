@@ -46,10 +46,8 @@ let g:nin_english#dict_fname = 'dict.txt'
 ```
 
 # Install dictionary
-After you 
-
-# Install dictionary automatically
-This command download and construct dictionary from this repo.
+After you install nin-english-vim, EJDict is needed to run.  
+This command download and construct dictionary from this repo.  
 https://github.com/kujirahand/EJDict
 
 ```vim
@@ -64,7 +62,13 @@ this dictionary can be downloaded from here.
 https://kujirahand.com/web-tools/EJDictFreeDL.php
 
 # Usage
-## Deno based
+There are two way to use nin-english-vim.
+- Deno and ddc based UI
+- Python feature based UI
+
+Deno based UI is faster and python based UI has fewer requirement.
+
+## Deno based UI
 In case of deno based ui, completion becomes automatic completion.
 
 ### Auto Completion
@@ -106,7 +110,7 @@ And this command makes 'K' hover like function.
 nnoremap <buffer> K :call EnglishSearch()<CR>
 ```
 
-## Python based
+## Python based UI
 In case of python based ui, you can enable it by typing below at first.  
 
 ```vim
@@ -147,6 +151,9 @@ EJDict is TSV format like below.
 
 But I am not sure.  
 I am just a Japanese monkey, furthermore am not engineer.
+However, this means that... if there is a such format dictionary,
+we can use this plugin like English/Japanese case.
 
 # License
-Mit
+License of this software is MIT.  
+However, license of EJDict is not MIT.
