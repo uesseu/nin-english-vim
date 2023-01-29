@@ -20,7 +20,7 @@ const setupDict = (fname) => {
       .split('\n')
       .map(s=>s.split('\t'))
       .filter(s => s.length === 2)
-      .forEach(s => dict[s[0].toLocaleLowerCase()] = s[1])
+      .forEach(s => dict[s[0].toLowerCase().trim()] = s[1])
     loaded = true
   }
 }
@@ -38,7 +38,7 @@ const setupWord = (token: string) => {
   for (const p of prefix)
     for (const s of suffix)
       if (token.slice(token.length-s.length) === s && token.slice(0, p.length) === p)
-        result = token.slice(p.length, token.length-s.length).toLowerCase()
+        result = token.slice(p.length, token.length-s.length).toLowerCase().trim()
   return dict[result]
 }
 
