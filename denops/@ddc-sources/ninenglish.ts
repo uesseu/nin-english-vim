@@ -37,7 +37,7 @@ export class Source extends BaseSource<Params> {
     sourceParams: Params;
     completeStr: string;
   }): Promise<Item[]> {
-    setupDict(args.sourceOptions['dict_fname'])
+    setupDict(args.sourceParams['dict_fname'])
     return dict
   }
 }

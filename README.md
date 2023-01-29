@@ -72,6 +72,7 @@ If you use ddc, ddc completes automatically.
 Ddc completes automatically and quickly.  
 However, configuration may be difficult a little.  
 This example involves vim-lsp and around plugin.  
+Please insert g:nin_english#dict_path into sourceParams.
 
 ```vim
 call ddc#custom#patch_global('sources', ['vim-lsp', 'around', 'ninenglish'])
@@ -82,12 +83,13 @@ call ddc#custom#patch_global('sourceOptions', #{
   \     converters: ['converter_fuzzy']
   \   },
   \   around: #{ mark: 'Around'},
-  \   ninenglish: #{ mark: 'English',
-  \     dict_fname: 'g:nin_english#dict'},
+  \   ninenglish: #{ mark: 'English'},
   \   vim-lsp: #{
   \     mark: 'LSP',
   \     forceCompletionPattern: '\w+|\.\w*|:\w*|->\w*' },
   \ })
+call ddc#custom#patch_global('sourceParams', #{
+  \   ninenglish: #{dict_fname: 'g:nin_english#dict_path'}})
 ```
 
 ### Search words
