@@ -139,6 +139,15 @@ Code like below makes 'K' function key to search word.
 nnoremap <buffer> K :call EnglishSearchPython()<CR>
 ```
 
+## Pseudo syntax hilight
+Running syntax hilight of such language as English is not easy.  
+It must be slow and not easy to write program.  
+And so, I made pseudo syntax hilight.  
+This can be run by this command.
+
+```vim
+call NinEnglishHilight()
+```
 # EJDict format
 Perhaps, it may be useful for people in other country,
 if there is compatible dictionary.
