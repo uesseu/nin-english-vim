@@ -35,11 +35,15 @@ const prefix = ['', 'a', 'bi', 'pre', 'mul', 'non', 'hyper']
 const setupWord = (token: string) => {
   let tokens = [token]
   let result = 'No result'
+  let key = ''
   for (const p of prefix)
     for (const s of suffix)
-      if (token.slice(token.length-s.length) === s && token.slice(0, p.length) === p)
-        result = token.slice(p.length, token.length-s.length).toLowerCase().trim()
-  return dict[result]
+      if (token.slice(token.length-s.length) === s
+          && token.slice(0, p.length) === p){
+        key = token.slice(p.length, token.length-s.length).toLowerCase().trim()
+        if (key in dict) return dict[key].replace(/\//g, ';')
+        }
+  return 'Not found'
 }
 
 export async function main(denops: Denops): Promise<void> {

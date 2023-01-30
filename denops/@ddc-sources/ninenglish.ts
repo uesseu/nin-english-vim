@@ -21,7 +21,7 @@ const setupDict = (fname) => {
         .map(s=>s.split('\t'))
         .filter(s => s.length === 2)
         .map(s=> <Item>{word: s[0],
-             info: s[1].replace(/\//g, '\n').replace(/;/g, '\n'),
+             info: s[1].replace(/\//g, ';'),
         dup: true})
     loaded = true
 }

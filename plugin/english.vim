@@ -30,8 +30,8 @@ function! NinHoverFloat(texts) abort
       let tmplen = strdisplaywidth(s)
       if tmplen > width
         let width = tmplen
-        let height += 1
       endif
+      let height += 1
     endfor
     let opts = {'relative': 'cursor', 'width': width,
                 \'height': height, 'col': 0, 'row': 1,
