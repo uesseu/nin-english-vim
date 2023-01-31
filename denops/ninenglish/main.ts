@@ -29,7 +29,7 @@ type Params = {
 };
 
 
-const suffix = ['', 's', 'es', 'ed', 'is', 'ly', 'ing', 'able', 'lize', 'lized']
+const suffix = ['', 's', 'd', 'y', 'es', 'ed', 'is', 'ly', 'ing', 'able', 'lize', 'lized']
 const prefix = ['', 'a', 'bi', 'pre', 'mul', 'non', 'hyper']
 
 const setupWord = (token: string) => {
@@ -41,7 +41,7 @@ const setupWord = (token: string) => {
       if (token.slice(token.length-s.length) === s
           && token.slice(0, p.length) === p){
         key = token.slice(p.length, token.length-s.length).toLowerCase().trim()
-        if (key in dict) return dict[key].replace(/\//g, ';')
+        if (key in dict) return key + ';' + dict[key].replace(/\//g, ';')
         }
   return 'Not found'
 }
