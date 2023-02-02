@@ -8,11 +8,16 @@ let g:nin_english#dict_path = g:nin_english#dict_dir.'/'.g:nin_english#dict_fnam
 command! EnglishInit call NinEnglishInitPython()
 command! EnglishInstall call NinEnglishInstall()
 
+let s:float_win_exists = 0
+
 function! NinCloseHoverFloat() abort
+  if s:float_win_exists == 1
     call nvim_win_close(g:nin_win, v:true)
     augroup nin_win
-        autocmd!
+      autocmd!
     augroup END
+    let s:float_win_exists = 0
+  endif
 endfunction
 
 function! EnglishSearchDeno() abort
@@ -37,9 +42,10 @@ function! NinHoverFloat(texts) abort
                 \'height': height, 'col': 0, 'row': 1,
                 \'anchor': 'NW', 'style': 'minimal'} 
     let g:nin_win = nvim_open_win(buf, 0, opts)
+    let s:float_win_exists = 1
     augroup nin_win
       autocmd!
-      autocmd CursorMoved,CursorMovedI,InsertEnter <buffer> call NinCloseHoverFloat()
+      autocmd CursorMoved,CursorMovedI,InsertEnter,MenuPopup <buffer> call NinCloseHoverFloat()
     augroup END
   else
     call popup_atcursor(a:texts, {})
