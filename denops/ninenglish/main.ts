@@ -31,18 +31,18 @@ type Params = {
 
 const suffix = ['', 's', 'd', 'y', 'es', 'ed', 'is', 'ly', 'ing', 'able', 'lize', 'lized']
 const prefix = ['', 'a', 'bi', 'pre', 'mul', 'non', 'hyper']
+const after = ['', 'e', 'ing']
 
 const setupWord = (token: string) => {
-  let tokens = [token]
-  let result = 'No result'
   let key = ''
   for (const p of prefix)
     for (const s of suffix)
-      if (token.slice(token.length-s.length) === s
-          && token.slice(0, p.length) === p){
-        key = token.slice(p.length, token.length-s.length).toLowerCase().trim()
-        if (key in dict) return key + ';' + dict[key].replace(/\//g, ';')
-        }
+      for (const a of after)
+        if (token.slice(token.length-s.length) === s
+            && token.slice(0, p.length) === p){
+          key = token.slice(p.length, token.length-s.length).toLowerCase().trim() + a
+          if (key in dict) return key + ';' + dict[key].replace(/\//g, ';').trim()
+          }
   return 'Not found'
 }
 
