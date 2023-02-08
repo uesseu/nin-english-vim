@@ -6,7 +6,7 @@ scriptencoding utf-8
 
 let g:nin_english#dict_path = g:nin_english#dict_dir.'/'.g:nin_english#dict_fname
 command! EnglishInit call NinEnglishInitPython()
-command! EnglishInstall call NinEnglishInstall()
+command! EnglishInstall call InstallEJDict()
 
 let s:float_win_exists = 0
 
@@ -24,7 +24,7 @@ function! EnglishSearchDeno() abort
   call NinHoverFloat(split(denops#request('ninenglish', 'hover', [g:nin_english#dict_path]), ';'))
 endfunction
 
-function! NinHoverFloat(texts) abort
+function! NinHoverFloat(texts, insertmode=0) abort
   if has('nvim')
     let buf = nvim_create_buf(v:false, v:true)
     call nvim_buf_set_lines(buf, 0, -1, v:true, a:texts)
@@ -54,7 +54,11 @@ endfunction
 
 function! InstallEJDict() abort
   exec "!git clone https://github.com/kujirahand/ejdict ".g:nin_english#dict_dir
-  exec "!cat ".g:nin_english#dict_dir."/src/* > ".g:nin_english#dict_path
+  if has('win32')
+    exec "!type ".g:nin_english#dict_dir."/src/* > ".g:nin_english#dict_path
+  else
+    exec "!cat ".g:nin_english#dict_dir."/src/* > ".g:nin_english#dict_path
+  endif
 endfunction
 
 if exists('g:loaded_nin_english')
