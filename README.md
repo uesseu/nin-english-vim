@@ -1,5 +1,5 @@
-This is old one.
-If you want new one, visit below.
+This is old one.  
+If you want new one, visit below.  
 https://github.com/uesseu/nin-english.vim
 
 # nin-english-vim
