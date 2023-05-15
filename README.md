@@ -1,3 +1,7 @@
+This is old one.
+If you want new one, visit below.
+https://github.com/uesseu/nin-english.vim
+
 # nin-english-vim
 A vim plugin for Japanese person, who has to write English ('A`).  
 It is based on EJDict, wonderful english-japanese dictionary.  
